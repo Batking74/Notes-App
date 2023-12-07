@@ -4,6 +4,7 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+let itemID = 0;
 
 if (window.location.pathname === '/notes') {
   noteForm = document.querySelector('.note-form');
@@ -46,13 +47,14 @@ const saveNote = async (note) => {
   });
 }
 
-const deleteNote = (id) =>
-  fetch(`/api/notes/${id}`, {
+const deleteNote = async (id) => {
+  fetch(`/api/notes/:${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     }
   });
+}
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
@@ -74,9 +76,11 @@ const renderActiveNote = () => {
 };
 
 const handleNoteSave = () => {
+  itemID++
   const newNote = {
+    id: itemID,
     title: noteTitle.value,
-    text: noteText.value
+    text: noteText.value,
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();

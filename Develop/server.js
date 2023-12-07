@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const db = require('./db/db.json');
+let db = require('./db/db.json');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
@@ -23,8 +23,9 @@ app.route('/api/notes')
 
 // Deletes A Note from Database
 app.delete('/api/notes/:id', (req, res) => {
-    const noteIndex = req.params.id;
-    console.log(noteIndex);
+    const noteID = parseInt(req.params.id.replace(':', ''));
+    const newDB = db.filter((value, id) => id != noteID);
+    db = newDB;
 })
 
 
