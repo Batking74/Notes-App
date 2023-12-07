@@ -46,14 +46,13 @@ const saveNote = async (note) => {
   });
 }
 
-const deleteNote = (id) => {
+const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     }
   });
-}
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);

@@ -1,10 +1,13 @@
 const express = require('express');
 const path = require('path');
 const db = require('./db/db.json');
+const bodyParser = require('body-parser');
+const fs = require('fs');
 const app = express();
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 
 
 // Api Note Routes
@@ -14,7 +17,7 @@ app.route('/api/notes')
 })
 .post((req, res) => {
     const data = req.body;
-    console.log(data);
+    db.push(data);
 })
 
 
