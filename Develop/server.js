@@ -18,6 +18,9 @@ app.route('/api/notes')
 .post((req, res) => {
     const data = req.body;
     db.push(data);
+    fs.writeFile('./db/db.json', JSON.stringify(db), (error) => {
+        if(error) console.log(error);
+    });
 })
 
 
@@ -26,6 +29,9 @@ app.delete('/api/notes/:id', (req, res) => {
     const noteID = parseInt(req.params.id.replace(':', ''));
     const newDB = db.filter((value, id) => id != noteID);
     db = newDB;
+    fs.writeFile('./db/db.json', JSON.stringify(newDB), (error) => {
+        if(error) console.log(error);
+    });
 })
 
 
