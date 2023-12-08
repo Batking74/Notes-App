@@ -4,6 +4,8 @@ let db = require('./db/db.json');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
+require('dotenv').config();
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,7 +47,7 @@ app.get('/notes', (req, res) => {
 
 
 // Starting server
-app.listen(3001, (error) => {
+app.listen(PORT, (error) => {
     if(error) console.log(error);
     console.log('listening on PORT 3001!');
 })
