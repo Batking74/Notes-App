@@ -27,7 +27,8 @@ app.route('/api/notes')
 // Deletes A Note from Database
 app.delete('/api/notes/:id', (req, res) => {
     const noteID = parseInt(req.params.id.replace(':', ''));
-    const newDB = db.filter((value, id) => id != noteID);
+    console.log(noteID)
+    const newDB = db.filter((value, i) => db[i].id != noteID);
     db = newDB;
     fs.writeFile('./db/db.json', JSON.stringify(newDB), (error) => {
         if(error) console.log(error);
