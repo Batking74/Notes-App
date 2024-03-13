@@ -1,3 +1,4 @@
+// Importing Modules/Packages
 const express = require('express');
 const path = require('path');
 let db = require('./db/db.json');
@@ -6,6 +7,7 @@ const fs = require('fs');
 const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT || 3001;
+
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,7 +31,6 @@ app.route('/api/notes')
 // Deletes A Note from Database
 app.delete('/api/notes/:id', (req, res) => {
     const noteID = parseInt(req.params.id.replace(':', ''));
-    console.log(noteID)
     const newDB = db.filter((value, i) => db[i].id != noteID);
     db = newDB;
     fs.writeFile('./db/db.json', JSON.stringify(newDB), (error) => {
