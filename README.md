@@ -23,6 +23,6 @@ Nazir's Note Taker is a straightforward app designed for easy note-taking. Captu
 = fs
 
 
-Deployed Site: https://nazirs-notes-c5bd0256a734.herokuapp.com/notes
+Deployed Site: https://nazirs-notes-c5bd0256a734.herokuapp.com
 
 GitHub Repo: https://github.com/Batking74/Notes-App
