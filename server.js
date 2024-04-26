@@ -1,8 +1,8 @@
 // Importing Modules/Packages
-const express = require('express');
-const path = require('path');
-let db = require('./db/db.json');
 const bodyParser = require('body-parser');
+const express = require('express');
+let db = require('./db/db.json');
+const path = require('path');
 const fs = require('fs');
 const app = express();
 require('dotenv').config();
@@ -16,9 +16,7 @@ app.use(bodyParser.json());
 
 // Api Note Routes
 app.route('/api/notes')
-.get((req, res) => {
-    res.send(JSON.stringify(db));
-})
+.get((req, res) => res.send(JSON.stringify(db)))
 .post((req, res) => {
     const data = req.body;
     db.push(data);

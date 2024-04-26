@@ -4,8 +4,12 @@
   "description": "Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.",
   "main": "server.js",
   "scripts": {
-    "build": "echo 'No build steps required'",
-    "start": "npm i && node server.js"
+    "sass": "node-sass public/assets/styles.sass public/assets/output/main.min.css --output-style compressed",
+    "reducejs": "terser public/assets/index.js -o public/assets/output/main.min.js --compress --mangle",
+    "purgecss": "purgecss --css public/assets/output/main.min.css --content public/*.html --output public/assets/output/main.min.css",
+    "build": "npm i && npm run sass && npm run reducejs",
+    "start": "npm i && node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "nazirknuckles",
@@ -15,5 +19,11 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.1.0",
+    "purgecss": "^6.0.0",
+    "terser": "^5.30.4"
   }
 }
